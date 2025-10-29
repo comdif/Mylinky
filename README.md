@@ -81,3 +81,5 @@ Installez maintenant grafana-server:
 Loguez-vous ensuite sur http://votreip:3000
 Créez la Data-source MYSQL indiquez +00 en time zone.
 Importez ensuite le fichier json et vous devriez avoir un beau dashboard avec vos datas.
+Les tarifs programmés sont l'offre tarif bleu HP/HC a cette date: 0.0002081 et 0.0001635, changez les si nécessaire dans le fichier json ou sur l'interface de grafana.
+
