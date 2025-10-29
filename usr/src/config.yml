@@ -1,0 +1,6 @@
+database:
+  server: localhost
+  name: mylinky
+  user: linky
+  password: password
+device: /dev/ttyACM0
