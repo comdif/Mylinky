@@ -16,6 +16,7 @@ terminal = linky.setup_serial(config['device'])
 # Try to connect the db server and creating schema if not exists Check scenarion for test_db_connection in linky.py
 linky.test_db_connection(config['database']['server'], config['database']['user'], config['database']['password'], config['database']['name'])
 
+last_data_PTEC = None  # To keep the last valid PTEC value
 # ----------------------------- #
 # Main loop                     #
 # ----------------------------- #
@@ -63,7 +64,11 @@ while True:
                 break
         ########################################
         if line.startswith('PTEC'):
-           data_PTEC = str(line[5:7])
+            temp_PTEC = str(line[5:7])
+            if temp_PTEC in ('HC', 'HP'):
+                data_PTEC = temp_PTEC
+            else:
+                data_PTEC = last_data_PTEC  # Use previous if not HC or HP
 
         # We have HCHP, HCHC, PTEC and PAPP, we can now close the connection
         if data_HCHP and data_HCHC and data_PAPP and data_PTEC:
