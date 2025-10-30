@@ -9,7 +9,8 @@ un script adapté a l'abonnement BASE (tarif fixe) vous le trouverez sur ce dép
 Le Matériel nécessaire pour réaliser votre Télémétrie est ici: https://www.tindie.com/products/hallard/micro-teleinfo-v30 et coute une vingtaine d'euros.
 
 Pour le serveur vous pouvez utiliser un Raspberry 4 ou 5, je vous déconseille vivement le 3 qui n'est pas assez puissant, même si ca semble fonctionner
-il est trop lent et pas assez puissant, lors de mes tests j'ai vu des trames corrompues.
+il est trop lent et lors de mes tests j'ai vu des trames corrompues qui plantaient le script jusqu'a ce que je corrige main.py pour le rendre plus résilient.
+
 Pour ma part je l'ai installé sous forme de VM sur un miniserveur acheté sur Aliexpress assez musclé ou j'ai un hyperviseur VmWare ESXI
 et qui me sert a faire tourner également d'autres VMs.
 
