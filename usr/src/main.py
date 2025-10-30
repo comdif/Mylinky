@@ -25,10 +25,9 @@ while True:
     data_HCHC = None
     data_PAPP = None
     data_PTEC = None
-    # Beginning to read data from Linky
     log.debug("Opening terminal...")
     terminal.open()
-    # reading continously output until we have data that interests us
+    restart_cycle = False
     while True:
         line = terminal.readline().decode('utf8')
         log.debug(f"Current line: {line}")
@@ -38,21 +37,30 @@ while True:
             if myhchp.isnumeric():
                 data_HCHP = int(line[5:14])
             else:
-                data_HCHP = ""
+                log.error("HCHP is not numeric, closing terminal and restarting main loop.")
+                terminal.close()
+                restart_cycle = True
+                break
         ########################################
         if line.startswith('HCHC'):
             myhchc = line[5:14]
             if myhchc.isnumeric():
                 data_HCHC = int(line[5:14])
             else:
-                data_HCHC = ""
-         ########################################
+                log.error("HCHC is not numeric, closing terminal and restarting main loop.")
+                terminal.close()
+                restart_cycle = True
+                break
+        ########################################
         if line.startswith('PAPP'):
             myapp = line[5:10]
             if myapp.isnumeric():
                 data_PAPP = int(line[5:10])
             else:
-                data_PAPP = ""
+                log.error("PAPP is not numeric, closing terminal and restarting main loop.")
+                terminal.close()
+                restart_cycle = True
+                break
         ########################################
         if line.startswith('PTEC'):
            data_PTEC = str(line[5:7])
@@ -62,7 +70,10 @@ while True:
             log.debug(f"Output parsed: HCHP={data_HCHP}, HCHC={data_HCHC}, PAPP={data_PAPP}, PTEC={data_PTEC}. Closing terminal.")
             terminal.close()
             break
-    
+
+    if restart_cycle:
+        continue
+   
     # Connecting to database
     log.debug("Connecting to database")
     db, cr = linky.open_db(config['database']['server'], config['database']['user'], config['database']['password'], config['database']['name'])
