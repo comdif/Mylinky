@@ -11,4 +11,4 @@ Rajouter des champs decimaux (3,1) dans la db mysql, les déclarer dans linky.py
 
 et les faire remonter dans la dB
 
-Voir image dashboar-temp.jpg
+Voir image dashboar-temp.jpg https://raw.githubusercontent.com/comdif/Mylinky/refs/heads/main/dashboar-temp.jpg
