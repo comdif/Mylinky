@@ -78,7 +78,14 @@ while True:
 
     if restart_cycle:
         continue
-   
+        
+    # Temperature feature
+    resptemp = urllib2.urlopen('http://192.168.20.116/t')
+    tempout = resptemp.read()
+    resptempin = urllib2.urlopen('http://192.168.20.136/z*Z9/t')
+    tempin = resptempin.read()
+
+    
     # Connecting to database
     log.debug("Connecting to database")
     db, cr = linky.open_db(config['database']['server'], config['database']['user'], config['database']['password'], config['database']['name'])
